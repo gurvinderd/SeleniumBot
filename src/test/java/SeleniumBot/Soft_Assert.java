@@ -23,6 +23,7 @@ public class Soft_Assert {
  
   @BeforeClass
   public void load_url(){
+    System.out.println( "1Hello World!" );
    driver.manage().window().maximize();
    driver.get("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
   } 
@@ -30,6 +31,7 @@ public class Soft_Assert {
   @Test
   //In this method, If any assertion fails then execution will be aborted.
    public void hard_assert_text() {
+     System.out.println( "2Hello World!" );
    Actualtext = driver.findElement(By.xpath("//h2/span")).getText();
    //Text on expected side Is written Incorrect intentionally to get fail this assertion.
    Assert.assertEquals(Actualtext, "Tuesday, 01 January 2014", "1st assert failed.");
@@ -82,6 +84,7 @@ public class Soft_Assert {
   
   @AfterClass  
   public void Closebrowser(){ 
+    System.out.println( "3Hello World!" );
    driver.quit();   
   }
 

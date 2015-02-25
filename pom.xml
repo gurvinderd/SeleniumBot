@@ -13,7 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-<reporting>
+<build>
     <plugins>
       <plugin>
       <!-- Build an executable JAR -->
@@ -32,18 +32,37 @@
     </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.18.1</version>
+        <configuration>
+          
+        </configuration>
+        <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>2.18.1</version>
         <configuration>
           <includes>
-    <include>**/Soft_Assert*.java</include>
-    <include>**/*Test.java</include>
-    <include>**/*TestCase.java</include>
+    <include>Soft_Assert.java</include>
+    <include>*Test.java</include>
+    <include>**/*Test*.java</include>
 </includes>
         </configuration>
       </plugin>
     </plugins>
-  </reporting>
+  </build>
   <dependencies>
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
