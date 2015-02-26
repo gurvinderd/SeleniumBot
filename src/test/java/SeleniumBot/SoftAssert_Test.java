@@ -4,9 +4,13 @@ package SeleniumBot;
 //}
 //package Testng_Pack;
 
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,14 +19,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class Soft_Assert {
+@Test(groups={"self"})
+public class SoftAssert_Test {
          //Created object of testng SoftAssert class to use It's Properties.
   SoftAssert s_assert = new SoftAssert();
   String Actualtext;
-  WebDriver driver = new FirefoxDriver();
+  public WebDriver driver;
+  
  
   @BeforeClass
-  public void load_url(){
+  public void setUP(){
+	  File pathToBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox33\\firefox.exe");
+	  FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+	  FirefoxProfile firefoxProfile = new FirefoxProfile();    
+	  driver = new FirefoxDriver(ffBinary,firefoxProfile);
     System.out.println( "1Hello World!" );
    driver.manage().window().maximize();
    driver.get("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
